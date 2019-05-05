@@ -15,11 +15,11 @@ exports.getWeather = function(req, res) {
 		return res.status(400).send('city missing');
 	}
 	
-	alert(city);
+	//alert(city);
 
 	//var aurl = OPENWEATHERURL + '&zip=' + zip + ',NZ';
 	//var aurl = OPENWEATHERURL + '&q=' + city + ',NZ';
-	var aurl = OPENWEATHERURL + '&q=' + city + ',NZ';
+	var aurl = OPENWEATHERURL + '&q=wairoa,NZ';
 
 	request({
 		method: 'GET',
@@ -32,7 +32,8 @@ exports.getWeather = function(req, res) {
     	} else {
     		if(body.cod === 200) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
-    			var response = {city: body.name, weather: weath};
+    			//var response = {city: body.name, weather: weath};
+    			var response = {city: city, weather: weath};
     			return res.status(200).send(response);
     		} else {
                 return res.status(400).send({msg:'Failed'});
