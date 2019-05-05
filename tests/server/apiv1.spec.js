@@ -82,13 +82,13 @@
     it('with valid zip code', function() {
       reqMock = {
         query: {
-          zip: 'Wairoa'
+          zip: 'Hamilton'
         }
       };
 
       var body = {
         cod: 200,
-        name: 'Wairoa',
+        name: 'Hamilton',
         weather: [
           {
             main: 'cold'
