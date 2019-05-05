@@ -35,7 +35,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         if(data.length > 0) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
-                url: '/api/v1/getWeather?q=' + data
+                url: '/api/v1/getWeather?city=' + data
             }).then( function(response) {
                 if(which === 1) {
                     $scope.zip1City = response.data.city;

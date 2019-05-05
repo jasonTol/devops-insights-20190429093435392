@@ -10,16 +10,16 @@ var request = REQUEST.defaults( {
 var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric";
 
 exports.getWeather = function(req, res) {
-	var city = req.query.city;
-	if( (city === null) || (typeof(city) === 'undefined') ) {
+	var newCity = req.query.city;
+	if( (newCity === null) || (typeof(newCity) === 'undefined') ) {
 		return res.status(400).send('city missing');
 	}
 	
 	//alert(city);
 
 	//var aurl = OPENWEATHERURL + '&zip=' + zip + ',NZ';
-	//var aurl = OPENWEATHERURL + '&q=' + city + ',NZ';
-	var aurl = OPENWEATHERURL + '&q=wairoa,NZ';
+	var aurl = OPENWEATHERURL + '&q=' + newCity + ',NZ';
+	//var aurl = OPENWEATHERURL + '&q=wairoa,NZ';
 
 	request({
 		method: 'GET',
@@ -32,8 +32,8 @@ exports.getWeather = function(req, res) {
     	} else {
     		if(body.cod === 200) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
-    			//var response = {city: body.name, weather: weath};
-    			var response = {city: city, weather: weath};
+    			var response = {city: body.name, weather: weath};
+    			//var response = {city: newCity, weather: weath};
     			return res.status(200).send(response);
     		} else {
                 return res.status(400).send({msg:'Failed'});
