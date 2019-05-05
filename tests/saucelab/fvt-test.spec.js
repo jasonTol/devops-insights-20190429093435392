@@ -70,7 +70,7 @@
     });
 
     it("Enter zip code and check output - 2", function(done) {
-      driver.findElement(webdriver.By.id('zip4')).sendKeys('7503');
+      driver.findElement(webdriver.By.id('zip4')).sendKeys('4108');
       driver.findElement(webdriver.By.id('zip4city')).getText().then(function(text) {
         assert.equal(text, ' Irving');
         done();
