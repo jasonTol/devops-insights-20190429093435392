@@ -69,7 +69,7 @@
       });
     });
 
-    it("Enter zip code and check output - 2", function(done) {
+    it("Enter city and check output - 2", function(done) {
       driver.findElement(webdriver.By.id('zip4')).sendKeys('Hamilton');
       driver.findElement(webdriver.By.id('zip4city')).getText().then(function(text) {
         assert.equal(text, ' Hamilton');

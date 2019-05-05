@@ -1,4 +1,5 @@
 
+/*eslint-disable no-extra-parens */
 (function () {
 
   'use strict';
@@ -27,9 +28,9 @@
   sinon.spy(resMock, "send");
 
 
-  describe('Get Weather', function() {
+  describe('Get Weather', function() { //Get Weather start
 
-    it('with without city', function() {
+    it('with without city', function() { //Test1
       reqMock = {
         query: {
 
@@ -39,9 +40,9 @@
       apiv1.getWeather(reqMock, resMock);
 
       assert(resMock.status.lastCall.calledWith(400), 'Unexpected status code:' + resMock.status.lastCall.args);
-    });
+    }); //End test1
 
-    it('with valid city and error from request call', function() {
+    it('with valid city and error from request call', function() { //Test2
       reqMock = {
         query: {
           city: 'Napier'
@@ -58,9 +59,9 @@
 
       assert(resMock.status.lastCall.calledWith(400), 'Unexpected response:' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.calledWith('Failed to get the data'), 'Unexpected response:' + resMock.send.lastCall.args);
-    });
+    }); //End test2
 
-    it('with incomplete city', function() {
+    it('with incomplete city', function() { //Test3
       reqMock = {
         query: {
           city: 'Wairoa'
@@ -77,9 +78,9 @@
 
       assert(resMock.status.lastCall.calledWith(400), 'Unexpected response:' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].msg === 'Failed', 'Unexpected response:' + resMock.send.lastCall.args);
-    });
+    }); //End test3
 
-    it('with valid city', function() {
+    it('with valid city', function() { //Test4
       reqMock = {
         query: {
           city: 'Hamilton'
@@ -110,8 +111,8 @@
       assert(resMock.status.lastCall.calledWith(200), 'Unexpected response:' + resMock.status.lastCall.args);
       assert(resMock.send.lastCall.args[0].city === 'Hamilton', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 10 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
-    });
-  });
+    }); //End test4
+  }); //End Get Weather
 
   /*
   describe('Get Weather 2', function() {

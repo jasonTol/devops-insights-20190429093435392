@@ -32,7 +32,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         }
 
         //if(data.length === 5) { //Sends city from ng-change value and outputs response to user
-        if(data.length > 0) { //Sends city from ng-change value and outputs response to user
+        if(data.length > 2) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather?city=' + data
