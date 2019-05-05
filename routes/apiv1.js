@@ -14,8 +14,11 @@ exports.getWeather = function(req, res) {
 	if( (city === null) || (typeof(city) === 'undefined') ) {
 		return res.status(400).send('city missing');
 	}
+	
+	alert(city);
 
 	//var aurl = OPENWEATHERURL + '&zip=' + zip + ',NZ';
+	//var aurl = OPENWEATHERURL + '&q=' + city + ',NZ';
 	var aurl = OPENWEATHERURL + '&q=' + city + ',NZ';
 
 	request({

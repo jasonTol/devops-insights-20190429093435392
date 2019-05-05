@@ -30,8 +30,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         } else if(which === 4) {
             data = $scope.zip4m;
         }
-        
-        alert(data.length);
 
         //if(data.length === 5) { //Sends city from ng-change value and outputs response to user
         if(data.length > 0) { //Sends city from ng-change value and outputs response to user
