@@ -12,7 +12,7 @@
     });
 
     var appUrl = process.env.APP_URL;
-
+/*
     describe('Get Weather', function() {
 
     	it('with valid zip code', function(done) {
@@ -43,7 +43,7 @@
         request({
       		method: 'GET',
               url: appUrl + '/api/v1/getWeather'
-          }, /* @callback */ function(err, resp, body) {
+          }, /* @callback */ function(err, resp, body) { /*
           	if(err) {
           		assert.fail('Failed to get the response');
           	} else {
@@ -72,5 +72,5 @@
             }
         });
     	});
-    });
+    }); */
 })();
