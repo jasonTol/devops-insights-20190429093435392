@@ -9,16 +9,6 @@
         <script src="/bower_components/angular/angular.js"></script>
         <script src="/bower_components/angular-route/angular-route.js"></script>
         <script src="/js/controllers.js"></script>
-        
-        <style>
-		      /* Always set the map height explicitly to define the size of the div
-		       * element that contains the map. */
-		      #map {
-		        height: 350px;
-				width: 350px;
-		        float: right;
-		      }
-    	</style>
     </head>
 
     <body>
@@ -38,8 +28,8 @@
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+          center: {lat: -39.0363124, lng: 177.4120491},
+          zoom: 10
         });
       }
     </script>
