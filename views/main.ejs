@@ -29,11 +29,29 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -39.0363124, lng: 177.4120491},
-          zoom: 10
+          zoom: 4
         });
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv2CHpNWSEDzJRczO8KYtuHv5I3zb6n3Q&callback=initMap"
-    async defer></script>
+    async defer>
+    
+    document.getElementById("zip1lon").addEventListener('change', addMarker());
+    
+    function addMarker(){
+    	var newLat = document.getElementById("zip1lat").value;
+    	var newLon = document.getElementById("zip1lon").value;
+    	var newCity = document.getElementById("zip1city").value;
+    	
+    	var myLatLng = {lat: newLat, lng: newLon};
+    	
+    	var marker = new google.maps.Marker({
+		    position: myLatLng,
+		    map: map,
+		    title: newCity
+  		});
+    }
+    
+    </script>
 
 </html>
