@@ -38,17 +38,18 @@
     <script>
     	//document.getElementById("zip1lon").addEventListener('change', addMarker());
     
-	    alert("addMarker method ENGAGED");
+	    
 	    
 	    function addMarker(){
 	    	var newLat = document.getElementById("zip1lat").value;
 	    	var newLon = document.getElementById("zip1lon").value;
 	    	var newCity = document.getElementById("zip1city").value;
 	    	
-	    	var myLatLng = {lat: newLat, lng: newLon};
+	    	//var myLatLng = {lat: newLat, lng: newLon};
+	    	alert("lat = " + newLat + " lon = " + newLong);
 	    	
 	    	var marker = new google.maps.Marker({
-			    position: myLatLng,
+			    position: {lat: newLat,lng: newLong},
 			    map: map,
 			    title: newCity
 	  		});
