@@ -42,24 +42,28 @@
 	    
 	    function addMarker(){
 	    	var newLat = document.getElementById("zip1lat").value;
-	    	var newLon = document.getElementById("zip1lon").value;
-	    	var newCity = document.getElementById("zip1city").value;
+	    	if(newLat != ""){ //Make sure there is a value
+	    		var newLon = document.getElementById("zip1lon").value;
+		    	var newCity = document.getElementById("zip1city").value;
+		    	
+		    	//var myLatLng = {lat: newLat, lng: newLon};
+		    	console.log("lat = " + newLat + " lon = " + newLon);
+		    	
+		    	var marker = new google.maps.Marker({
+				    position: {lat: newLat,lng: newLon},
+				    map: map,
+				    title: newCity
+		  		});
+	    	}
 	    	
-	    	//var myLatLng = {lat: newLat, lng: newLon};
-	    	console.log("lat = " + newLat + " lon = " + newLon);
-	    	
-	    	var marker = new google.maps.Marker({
-			    position: {lat: newLat,lng: newLon},
-			    map: map,
-			    title: newCity
-	  		});
 	    }
 	    
 	    
 		
 		window.onload = function() {
 	
-		    var target = document.getElementById("zip1lon");
+			var target = document.documentElement;
+		    //var target = document.getElementById("zip1lon");
 		
 		    var observer = new MutationObserver(function(mutations) {
 		      mutations.forEach(function(mutation) {
