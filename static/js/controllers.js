@@ -11,7 +11,7 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
 }]);
 
 ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$routeParams', '$timeout', '$sce',
-    function($scope, $http, $routeParams, $timeout, $sce, createMap) {
+    function(createMap, $scope, $http, $routeParams, $timeout, $sce) {
 
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
