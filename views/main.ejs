@@ -41,9 +41,9 @@
 	    
 	    
 	    function addMarker(){
-	    	var newLat = document.getElementById("zip1lat").innerText;
+	    	var newLat = document.getElementById("zip1lat").innerText.trim();
 	    	if(newLat != ""){ //Make sure there is a value
-	    		var newLon = document.getElementById("zip1lon").innerText;
+	    		var newLon = document.getElementById("zip1lon").innerText.trim();
 		    	var newCity = document.getElementById("zip1city").innerText;
 		    	
 		    	//var myLatLng = {lat: newLat, lng: newLon};
