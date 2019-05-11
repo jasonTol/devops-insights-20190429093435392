@@ -46,11 +46,11 @@
 	    		var newLon = document.getElementById("zip1lon").innerText.trim();
 		    	var newCity = document.getElementById("zip1city").innerText;
 		    	
-		    	//var myLatLng = {lat: newLat, lng: newLon};
+		    	var myLatLng = new google.maps.LatLng(newLat, newLon);
 		    	console.log("lat = " + newLat + " lon = " + newLon);
 		    	
 		    	var marker = new google.maps.Marker({
-				    position: {lat: newLat,lng: newLon},
+				    position: myLatLng,
 				    map: map,
 				    title: newCity
 		  		});
