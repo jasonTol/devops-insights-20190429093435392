@@ -2,7 +2,7 @@
 angular.module('googMap', [])
 .factory('createMap', function() {
 	var map;
-  var markerArray = [];
+  var markerArray = [0,0,0,0];
   
   var initialiseMap = function(mapDOM){
   	if(mapDOM == null){
@@ -29,12 +29,12 @@ angular.module('googMap', [])
   	});
   	
   	console.log("type of variable in the array = " + typeof markerArray[index-1]);
-  	if(markerArray[index-1] !== null){
+  	if(markerArray[index-1] !== 0){
   		console.log("first array item " + markerArray[index-1].getTitle());
 		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
   	}
   	
-  	markerArray[index-1].push(marker); //Add marker to array at this position
+  	markerArray[index-1] = marker; //Add marker to array at this position
   	console.log("first array item " + markerArray[index-1].getTitle());
   	return marker;
   };
