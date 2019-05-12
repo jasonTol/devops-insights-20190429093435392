@@ -28,6 +28,7 @@ angular.module('googMap', [])
 	    title: city
   	});
   	
+  	console.log("type of variable in the array = " + typeof markerArray[index-1]);
   	if(markerArray[index-1] !== null){
   		console.log("first array item " + markerArray[index-1].getTitle());
 		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
