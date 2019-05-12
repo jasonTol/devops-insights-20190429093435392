@@ -41,7 +41,6 @@ angular.module('googMap', [])
 
   return {
   	initialiseMap: initialiseMap,
-  	updateMarker: updateMarker,
-    somteen: displaySomething
+  	updateMarker: updateMarker
   };
 });

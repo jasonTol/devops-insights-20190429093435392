@@ -54,7 +54,6 @@ ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$route
                     $scope.zip1lat = response.data.lat;
                     $scope.zip1lon = response.data.lon;
                     createMap.updateMarker(1, $scope.map, response.data.city, response.data.lat, response.data.lon);
-                    //window.alert(createMap.geoDisplay(response.data.lat, response.data.lon));
                 } else if(which === 2) {
                     $scope.zip2City = response.data.city;
                     $scope.zip2Weather = response.data.weather;
