@@ -6,12 +6,12 @@ angular.module('googMap', [])
   
   var initialiseMap = function(mapDOM){
   	if(mapDOM == null){
-		map = new google.maps.Map(document.getElementById('map'), {
+		mapDOM = new google.maps.Map(document.getElementById('map'), {
 	      center: {lat: -39.0363124, lng: 177.4120491},
 	      zoom: 5
 	    });
 	    
-	    return map;
+	    return mapDOM;
 	}
   }
   
