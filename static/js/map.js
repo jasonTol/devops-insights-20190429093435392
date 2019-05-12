@@ -2,7 +2,7 @@
 angular.module('googMap', [])
 .factory('createMap', function() {
 	var map;
-  var markerArray = [0,0,0,0];
+  var markerArray = [];
   
   var initialiseMap = function(mapDOM){
   	if(mapDOM == null){
@@ -28,13 +28,15 @@ angular.module('googMap', [])
 	    title: city
   	});
   	
-	markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
-  	markerArray[index-1].push(marker); //Replace old marker at this position
+  	if(markerArray[index-1] !== null){
+  		console.log("first array item " + markerArray[index-1].getTitle());
+		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
+  	}
+  	
+  	markerArray[index-1].push(marker); //Add marker to array at this position
+  	console.log("first array item " + markerArray[index-1].getTitle());
   	return marker;
   };
-  
-  var displaySomething = "If it is nobler in mind to suffer the slings and arrows of outragious fortune, or take arms against a sea of troubles";
-
 
 
   return {
@@ -43,20 +45,3 @@ angular.module('googMap', [])
     somteen: displaySomething
   };
 });
-
-/*
-var map;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
-    });
-  }
-  */
- 
- /*
-  * Create another service which initiializes the google map on startup?
-  * - check if googlemap needs to be initialised
-  * - method that takes lat and lon
-  * 	- updates array of google markers based on which input box was updated
-  */
