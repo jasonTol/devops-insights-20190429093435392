@@ -1,16 +1,22 @@
 
 angular.module('googMap', [])
-.factory('createMap', function($scope) {
+.factory('createMap', function() {
+	var map;
   var markerArray = [0,0,0,0];
   
-  if($scope.map == null){
-		$scope.map = new google.maps.Map(document.getElementById('map'), {
+  var initialiseMap = function(mapDOM){
+  	if(mapDOM == null){
+		map = new google.maps.Map(document.getElementById('map'), {
 	      center: {lat: -39.0363124, lng: 177.4120491},
 	      zoom: 5
 	    });
+	    
+	    return map;
 	}
+  }
+  
  
-  var updateMarker = function(index, map, city, lat, lon)
+  var updateMarker = function(index, gooMap, city, lat, lon)
   {
     var myLatLng = new google.maps.LatLng(lat, lon);
     
@@ -18,7 +24,7 @@ angular.module('googMap', [])
     	
 	var marker = new google.maps.Marker({
    		position: myLatLng,
-	    map: map,
+	    map: gooMap,
 	    title: city
   	});
   	
@@ -31,6 +37,7 @@ angular.module('googMap', [])
 
 
   return {
+  	initialiseMap: initialiseMap,
   	updateMarker: updateMarker,
     somteen: displaySomething
   };
