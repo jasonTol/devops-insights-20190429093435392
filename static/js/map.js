@@ -13,7 +13,7 @@ angular.module('googMap', [])
 	    
 	    return mapDOM;
 	}
-  }
+  };
   
  
   var updateMarker = function(index, gooMap, city, lat, lon)
