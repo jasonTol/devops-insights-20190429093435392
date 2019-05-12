@@ -28,7 +28,8 @@ angular.module('googMap', [])
 	    title: city
   	});
   	
-  	markerArray[index-1] = marker;
+	markerArray[index-1].setMap(null) //Remove the marker for this position if it exists
+  	markerArray[index-1].push(marker); //Replace old marker at this position
   	return marker;
   };
   
