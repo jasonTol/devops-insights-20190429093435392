@@ -10,8 +10,17 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
     });
 }]);
 
-ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$routeParams', '$timeout', '$sce',
+ConsoleModule.controller('wcontroller', ['createMap($scope)', '$scope', '$http', '$routeParams', '$timeout', '$sce',
     function(createMap, $scope, $http, $routeParams, $timeout, $sce) {
+    	
+    	/*
+    	if($scope.map == null){
+    		$scope.map = new google.maps.Map(document.getElementById('map'), {
+	          center: {lat: -39.0363124, lng: 177.4120491},
+	          zoom: 5
+	        });
+    	}
+    	*/
 
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
@@ -42,8 +51,8 @@ ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$route
                     $scope.zip1Weather = response.data.weather;
                     $scope.zip1lat = response.data.lat;
                     $scope.zip1lon = response.data.lon;
-                    window.alert(createMap.somteen);
-                    window.alert(createMap.geoDisplay(response.data.lat, response.data.lon));
+                    createMap.updateMarker(1, response.data.city, response.data.lat, response.data.lon);
+                    //window.alert(createMap.geoDisplay(response.data.lat, response.data.lon));
                 } else if(which === 2) {
                     $scope.zip2City = response.data.city;
                     $scope.zip2Weather = response.data.weather;
