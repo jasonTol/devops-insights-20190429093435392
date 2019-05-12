@@ -12,15 +12,6 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
 
 ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$routeParams', '$timeout', '$sce',
     function(createMap, $scope, $http, $routeParams, $timeout, $sce) {
-    	
-    	/*
-    	if($scope.map == null){
-    		$scope.map = new google.maps.Map(document.getElementById('map'), {
-	          center: {lat: -39.0363124, lng: 177.4120491},
-	          zoom: 5
-	        });
-    	}
-    	*/
 
 	$scope.map = createMap.initialiseMap($scope.map); //Initialise the googlemap
 	
@@ -43,7 +34,7 @@ ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$route
         }
 
         //if(data.length === 5) { //Sends city from ng-change value and outputs response to user
-        if(data.length > 2) { //Sends city from ng-change value and outputs response to user
+        if(data.length > 3) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
                 url: '/api/v1/getWeather?city=' + data
@@ -53,10 +44,12 @@ ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$route
                     $scope.zip1Weather = response.data.weather;
                     $scope.zip1lat = response.data.lat;
                     $scope.zip1lon = response.data.lon;
-                    createMap.updateMarker(1, $scope.map, response.data.city, response.data.lat, response.data.lon);
+                    //createMap.updateMarker(1, $scope.map, response.data.city, response.data.lat, response.data.lon);
+                    createMap.updateMarker(1, $scope.map, [response.data.lat, response.data.lon]);
                 } else if(which === 2) {
                     $scope.zip2City = response.data.city;
                     $scope.zip2Weather = response.data.weather;
+                    mostRecentInputIndex = 2;
                 } else if(which === 3) {
                     $scope.zip3City = response.data.city;
                     $scope.zip3Weather = response.data.weather;
