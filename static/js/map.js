@@ -20,7 +20,7 @@ angular.module('googMap', [])
   {
     var myLatLng = new google.maps.LatLng(lat, lon);
     
-	console.log("Inside the updateMarker() of createMap service --{lat = " + newLat + " lon = " + newLon + "}--");
+	console.log("Inside the updateMarker() of createMap service --{lat = " + lat + " lon = " + lon + " index = " + index + "}--");
     	
 	var marker = new google.maps.Marker({
    		position: myLatLng,
