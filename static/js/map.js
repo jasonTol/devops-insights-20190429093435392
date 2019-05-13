@@ -12,23 +12,12 @@ angular.module('googMap', [])
 	    });
 	    
 	    mapDOM.addListener('click', function(e){
-	    	//ar geoArray = [];
-	    	//geoArray.push(e.latLng.lat(), e.latLng.lng());
-	    	
 	    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng.lat(), e.latLng.lng());
 	    });
 	    
 	    return mapDOM;
 	}
   };
-  
-  /*function placeMarkerAndPanTo(latLng, map){ //Place marker on map and pan to that location
-  	var marker = new google.maps.Marker({
-  		position: latLng,
-  		map: map
-  	});
-  	map.panTo(latLng);
-  }*/
   
   var updateMarker = function(index, gooMap, newLat, newLng)
   {
@@ -43,7 +32,6 @@ angular.module('googMap', [])
   	});
   	
   	if(markerArray[index-1] !== 0){ //If there is a marker in the array at index clear it
-  		//console.log("first array item " + markerArray[index-1].getTitle());
 		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
   	}
   	
@@ -54,31 +42,6 @@ angular.module('googMap', [])
   	markerArray[index-1] = marker; //Add marker to array at pass in index
   	return marker;
   };
-  
-  
- /*
-  var updateMarker = function(index, gooMap, city, lat, lon)
-  {
-    var myLatLng = new google.maps.LatLng(lat, lon);
-    
-	//console.log("Inside the updateMarker() of createMap service --{lat = " + lat + " lon = " + lon + " index = " + index + "}--");
-    	
-	var marker = new google.maps.Marker({
-   		position: myLatLng,
-	    map: gooMap,
-	    title: city
-  	});
-  	
-  	if(markerArray[index-1] !== 0){ //If there is a marker in the array at index clear it
-  		//console.log("first array item " + markerArray[index-1].getTitle());
-		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
-  	}
-  	
-  	mostRecentInputIndex = index-1; //Update the most recent input box that was used so correct marker can be updated in the array
-  	markerArray[index-1] = marker; //Add marker to array at pass in index
-  	return marker;
-  };
-  */
 
 
   return {
