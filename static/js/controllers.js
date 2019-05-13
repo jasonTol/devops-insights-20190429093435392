@@ -26,7 +26,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		var marker = new google.maps.Marker({
 	   		position: myLatLng,
 		    map: $scope.map,
-		    title: index
+		    title: index.toString()
 	  	});
 	  	
 	  	if(markerArray[index-1] !== 0){ //If there is a marker in the array at index clear it
