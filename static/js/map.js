@@ -1,5 +1,5 @@
 
-angular.module('googMap', [])
+angular.module('googMap',[])
 .factory('createMap', function() {
   var markerArray = [0,0,0,0];
   var mostRecentInputIndex = 1;
@@ -13,6 +13,7 @@ angular.module('googMap', [])
 	    
 	    mapDOM.addListener('click', function(e){
 	    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng.lat(), e.latLng.lng());
+	    	
 	    });
 	    
 	    return mapDOM;
@@ -28,7 +29,7 @@ angular.module('googMap', [])
 	var marker = new google.maps.Marker({
    		position: myLatLng,
 	    map: gooMap,
-	    //title: city
+	    title: index
   	});
   	
   	if(markerArray[index-1] !== 0){ //If there is a marker in the array at index clear it
@@ -40,7 +41,7 @@ angular.module('googMap', [])
   	mostRecentInputIndex = index; //Update the most recent input box that was used so correct marker can be updated in the array
   	console.log("input index updated to: " + mostRecentInputIndex);
   	markerArray[index-1] = marker; //Add marker to array at pass in index
-  	return marker;
+  	//return marker;
   };
 
 
