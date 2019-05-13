@@ -16,7 +16,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	var markerArray = [0,0,0,0];
   	var mostRecentInputIndex = 1;
   	
-	$scope.map = createMap.initialiseMap(); //Initialise the googlemap
+	$scope.map = initialiseMap(); //Initialise the googlemap
   
 	  var initialiseMap = function(mapDOM){
 	  	if(mapDOM == null){
