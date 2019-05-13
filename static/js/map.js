@@ -3,6 +3,7 @@ angular.module('googMap', [])
 .factory('createMap', function() {
   var markerArray = [0,0,0,0];
   var mostRecentInputIndex = 1;
+  var geocoder = new google.maps.Geocoder;
   
   var initialiseMap = function(mapDOM){
   	if(mapDOM == null){
@@ -12,10 +13,10 @@ angular.module('googMap', [])
 	    });
 	    
 	    mapDOM.addListener('click', function(e){
-	    	var geoArray = [];
-	    	geoArray.push(e.latLng.lat, e.latLng.lng);
+	    	//ar geoArray = [];
+	    	//geoArray.push(e.latLng.lat(), e.latLng.lng());
 	    	
-	    	updateMarker(mostRecentInputIndex, mapDOM, geoArray);
+	    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng.lat(), e.latLng.lng());
 	    });
 	    
 	    return mapDOM;
@@ -30,13 +31,18 @@ angular.module('googMap', [])
   	map.panTo(latLng);
   }*/
   
-  var updateMarker = function(index, gooMap, latLng)
+  var updateMarker = function(index, gooMap, newLat, newLng)
   {
-  	console.log("lat: " + latLng[0] + typeof latLng[0] + " lon: " + latLng[1] + typeof latLng[1]);
+  	console.log("lat: " + newLat + typeof newLat + " lon: " + newLng + typeof newLng);
   	console.log("input index updated to: " + mostRecentInputIndex);
-    var myLatLng = new google.maps.LatLng(latLng[0], latLng[1]);
+    var myLatLng = new google.maps.LatLng(newLat, newLng);
     
-	//console.log("Inside the updateMarker() of createMap service --{lat = " + lat + " lon = " + lon + " index = " + index + "}--");
+    geocoder.geocode({'location': myLatLng}, function(results, status){ //Get address for marker just placed
+    	if(status === 'OK'){
+    		if(results[0])
+    		console.log(results[0].formatted_address);
+    	}
+    });
     	
 	var marker = new google.maps.Marker({
    		position: myLatLng,
