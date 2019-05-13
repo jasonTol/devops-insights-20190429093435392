@@ -15,25 +15,8 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 
 	var markerArray = [0,0,0,0];
   	var mostRecentInputIndex = 1;
-  	
-	$scope.map = initialiseMap(); //Initialise the googlemap
   
-	  function initialiseMap(mapDOM){
-	  	if(mapDOM == null){
-			mapDOM = new google.maps.Map(document.getElementById('map'), {
-		      center: {lat: -39.0363124, lng: 177.4120491},
-		      zoom: 6
-		    });
-		    
-		    mapDOM.addListener('click', function(e){
-		    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng.lat(), e.latLng.lng());
-		    	
-		    });
-		    
-		    return mapDOM;
-		}
-	  }
-	  
+  
 	  function updateMarker(index, newLat, newLng)
 	  {
 	  	console.log("lat: " + newLat + typeof newLat + " lon: " + newLng + typeof newLng);
@@ -56,8 +39,24 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  	console.log("input index updated to: " + mostRecentInputIndex);
 	  	markerArray[index-1] = marker; //Add marker to array at pass in index
 	  }
-  
-	
+	  
+	  function initialiseMap(mapDOM){
+	  	if(mapDOM == null){
+			mapDOM = new google.maps.Map(document.getElementById('map'), {
+		      center: {lat: -39.0363124, lng: 177.4120491},
+		      zoom: 6
+		    });
+		    
+		    mapDOM.addListener('click', function(e){
+		    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng.lat(), e.latLng.lng());
+		    	
+		    });
+		    
+		    return mapDOM;
+		}
+	  }
+	  
+	$scope.map = initialiseMap(); //Initialise the googlemap
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
