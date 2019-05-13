@@ -18,7 +18,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
   	
 	$scope.map = initialiseMap(); //Initialise the googlemap
   
-	  var initialiseMap = function(mapDOM){
+	  function initialiseMap(mapDOM){
 	  	if(mapDOM == null){
 			mapDOM = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: -39.0363124, lng: 177.4120491},
@@ -34,7 +34,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		}
 	  };
 	  
-	  var updateMarker = function(index, newLat, newLng)
+	  function updateMarker(index, newLat, newLng)
 	  {
 	  	console.log("lat: " + newLat + typeof newLat + " lon: " + newLng + typeof newLng);
 	  	console.log("input index currently: " + mostRecentInputIndex);
