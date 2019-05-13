@@ -33,7 +33,7 @@ angular.module('googMap', [])
   var updateMarker = function(index, gooMap, newLat, newLng)
   {
   	console.log("lat: " + newLat + typeof newLat + " lon: " + newLng + typeof newLng);
-  	console.log("input index updated to: " + mostRecentInputIndex);
+  	console.log("input index currently: " + mostRecentInputIndex);
     var myLatLng = new google.maps.LatLng(newLat, newLng);
     	
 	var marker = new google.maps.Marker({
@@ -47,9 +47,9 @@ angular.module('googMap', [])
 		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
   	}
   	
-  	gooMap.panTo(latLng);
+  	gooMap.panTo(mylatLng);
   	
-  	mostRecentInputIndex = index-1; //Update the most recent input box that was used so correct marker can be updated in the array
+  	mostRecentInputIndex = index; //Update the most recent input box that was used so correct marker can be updated in the array
   	console.log("input index updated to: " + mostRecentInputIndex);
   	markerArray[index-1] = marker; //Add marker to array at pass in index
   	return marker;
