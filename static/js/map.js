@@ -47,7 +47,7 @@ angular.module('googMap', [])
 		markerArray[index-1].setMap(null); //Remove the marker for this position if it exists
   	}
   	
-  	gooMap.panTo(mylatLng);
+  	gooMap.panTo(myLatLng);
   	
   	mostRecentInputIndex = index; //Update the most recent input box that was used so correct marker can be updated in the array
   	console.log("input index updated to: " + mostRecentInputIndex);
