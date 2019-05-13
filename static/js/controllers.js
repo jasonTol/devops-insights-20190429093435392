@@ -14,6 +14,7 @@ ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$route
     function(createMap, $scope, $http, $routeParams, $timeout, $sce) {
 
 	$scope.map = createMap.initialiseMap($scope.map); //Initialise the googlemap
+	var geoArray = [];
 	
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
@@ -44,8 +45,11 @@ ConsoleModule.controller('wcontroller', ['createMap', '$scope', '$http', '$route
                     $scope.zip1Weather = response.data.weather;
                     $scope.zip1lat = response.data.lat;
                     $scope.zip1lon = response.data.lon;
-                    //createMap.updateMarker(1, $scope.map, response.data.city, response.data.lat, response.data.lon);
-                    createMap.updateMarker(1, $scope.map, [response.data.lat, response.data.lon]);
+                    geoArray.push(response.data.lat);
+                    geoArray.push(response.data.lon);
+                    createMap.updateMarker(1, $scope.map, geoArray);
+                    //createMap.updateMarker(1, $scope.map, response.data.city, response.data.lat, response.data.lon);                    
+                    //createMap.updateMarker(1, $scope.map, [response.data.lat, response.data.lon]);
                 } else if(which === 2) {
                     $scope.zip2City = response.data.city;
                     $scope.zip2Weather = response.data.weather;

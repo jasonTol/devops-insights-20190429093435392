@@ -29,6 +29,7 @@ angular.module('googMap', [])
   
   var updateMarker = function(index, gooMap, latLng)
   {
+  	console.log("input index updated to: " + mostRecentInputIndex);
     var myLatLng = new google.maps.LatLng(latLng[0], latLng[1]);
     
 	//console.log("Inside the updateMarker() of createMap service --{lat = " + lat + " lon = " + lon + " index = " + index + "}--");
