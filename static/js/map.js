@@ -11,12 +11,10 @@ angular.module('googMap', [])
 	      zoom: 6
 	    });
 	    
-	    var geoArray = [];
-	    geoArray.push(e.latLng.lat, e.latLng.lng);
-	    
 	    mapDOM.addListener('click', function(e){
 	    	var geoArray = [];
 	    	geoArray.push(e.latLng.lat, e.latLng.lng);
+	    	
 	    	updateMarker(mostRecentInputIndex, mapDOM, geoArray);
 	    });
 	    
