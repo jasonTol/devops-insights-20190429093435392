@@ -32,7 +32,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    
 		    return mapDOM;
 		}
-	  };
+	  }
 	  
 	  function updateMarker(index, newLat, newLng)
 	  {
@@ -55,7 +55,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  	mostRecentInputIndex = index; //Update the most recent input box that was used so correct marker can be updated in the array
 	  	console.log("input index updated to: " + mostRecentInputIndex);
 	  	markerArray[index-1] = marker; //Add marker to array at pass in index
-	  };
+	  }
   
 	
     $scope.somemessage = "Some weather";
