@@ -11,8 +11,13 @@ angular.module('googMap', [])
 	      zoom: 6
 	    });
 	    
+	    var geoArray = [];
+	    geoArray.push(e.latLng.lat, e.latLng.lng);
+	    
 	    mapDOM.addListener('click', function(e){
-	    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng);
+	    	var geoArray = [];
+	    	geoArray.push(e.latLng.lat, e.latLng.lng);
+	    	updateMarker(mostRecentInputIndex, mapDOM, geoArray);
 	    });
 	    
 	    return mapDOM;
