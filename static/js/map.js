@@ -3,7 +3,7 @@ angular.module('googMap', [])
 .factory('createMap', function() {
   var markerArray = [0,0,0,0];
   var mostRecentInputIndex = 1;
-  var geocoder = new google.maps.Geocoder;
+  var geocoder;
   
   var initialiseMap = function(mapDOM){
   	if(mapDOM == null){
@@ -11,6 +11,8 @@ angular.module('googMap', [])
 	      center: {lat: -39.0363124, lng: 177.4120491},
 	      zoom: 6
 	    });
+	    
+	    geocoder = new google.maps.Geocoder;
 	    
 	    mapDOM.addListener('click', function(e){
 	    	//ar geoArray = [];
