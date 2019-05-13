@@ -3,7 +3,6 @@ angular.module('googMap', [])
 .factory('createMap', function() {
   var markerArray = [0,0,0,0];
   var mostRecentInputIndex = 1;
-  var geocoder;
   
   var initialiseMap = function(mapDOM){
   	if(mapDOM == null){
@@ -11,8 +10,6 @@ angular.module('googMap', [])
 	      center: {lat: -39.0363124, lng: 177.4120491},
 	      zoom: 6
 	    });
-	    
-	    geocoder = new google.maps.Geocoder;
 	    
 	    mapDOM.addListener('click', function(e){
 	    	//ar geoArray = [];
@@ -38,13 +35,6 @@ angular.module('googMap', [])
   	console.log("lat: " + newLat + typeof newLat + " lon: " + newLng + typeof newLng);
   	console.log("input index updated to: " + mostRecentInputIndex);
     var myLatLng = new google.maps.LatLng(newLat, newLng);
-    
-    geocoder.geocode({'location': myLatLng}, function(results, status){ //Get address for marker just placed
-    	if(status === 'OK'){
-    		if(results[0])
-    		console.log(results[0].formatted_address);
-    	}
-    });
     	
 	var marker = new google.maps.Marker({
    		position: myLatLng,
