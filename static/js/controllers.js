@@ -48,7 +48,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    });
 		    
 		    mapDOM.addListener('click', function(e){
-		    	updateMarker(mostRecentInputIndex, mapDOM, e.latLng.lat(), e.latLng.lng());
+		    	updateMarker(mostRecentInputIndex, e.latLng.lat(), e.latLng.lng());
 		    	
 		    });
 		    
