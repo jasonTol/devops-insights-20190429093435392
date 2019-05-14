@@ -86,8 +86,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             if(mostRecentInputIndex === 1) {
                     $scope.zip1City = "";
                     $scope.zip1Weather = "";
-                    $scope.zip1lat = "";
-                    $scope.zip1lon = "";
                 } else if(mostRecentInputIndex === 2) {
                     $scope.zip2City = "";
                     $scope.zip2Weather = "";
@@ -128,9 +126,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             }).then( function(response) {
                 if(which === 1) {
                     $scope.zip1City = response.data.city;
-                    $scope.zip1Weather = response.data.weather;
-                    $scope.zip1lat = response.data.lat;
-                    $scope.zip1lon = response.data.lon;                 
+                    $scope.zip1Weather = response.data.weather;           
                     updateMarker(1, response.data.lat, response.data.lon);
                 } else if(which === 2) {
                     $scope.zip2City = response.data.city;
@@ -150,8 +146,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             if(which === 1) {
                     $scope.zip1City = "";
                     $scope.zip1Weather = "";
-                    $scope.zip1lat = "";
-                    $scope.zip1lon = "";
                 } else if(which === 2) {
                     $scope.zip2City = "";
                     $scope.zip2Weather = "";
