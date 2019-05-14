@@ -22,6 +22,7 @@ module.exports = function (grunt) {
       		'server-side': {
         		  options: {
           			 reporter: 'json',
+          			 showDiff: true,
           			 clearRequireCache: true,
           			 colors: true,
                  quite: true,
