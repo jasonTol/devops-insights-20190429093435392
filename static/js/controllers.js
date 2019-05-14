@@ -13,8 +13,8 @@ ConsoleModule.config(['$routeProvider', '$locationProvider','$sceDelegateProvide
 ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$timeout', '$sce',
     function($scope, $http, $routeParams, $timeout, $sce) {
 
-	var markerArray = [0,0,0,0];
-  	var mostRecentInputIndex = 1;
+		var markerArray = [0,0,0,0];
+  		var mostRecentInputIndex = 1;
   
   
 	  function updateMarker(index, newLat, newLng)
@@ -41,21 +41,21 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  }
 	  
 	  function initialiseMap(mapDOM){
-	  	if(mapDOM == null){
+	  	if(mapDOM === null){
 			mapDOM = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: -39.0363124, lng: 177.4120491},
 		      zoom: 6
 		    });
 		    
 		    mapDOM.addListener('click', function(e){
-		    	updateMarker(mostRecentInputIndex, e.latLng.lat(), e.latLng.lng());
-		    	getMarkerWeather(e.latLng.lat(), e.latLng.lng());
+		    	//updateMarker(mostRecentInputIndex, e.latLng.lat(), e.latLng.lng());
+		    	getWeather(undefined, e.latLng.lat(), e.latLng.lng());
 		    });
 		    
 		    return mapDOM;
 		}
 	  }
-	  
+	  /*
 	  function getMarkerWeather(newLat, newLng)
 	  {
 	  	console.log("In getmarkerWeather method newLat: " + newLat + typeof newLat + " newLng: " + newLng + typeof newLng);
@@ -98,12 +98,84 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 } 
         }
 	  }
+	  */
 	  
 	$scope.map = initialiseMap(); //Initialise the googlemap
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
+    
+    
+    function getWeather(which, newLat, newLng)
+    {
+		var newUrl;
+		
+		if(which !== undefined){ //If user entered town in input boxes
+			var data = "";
+	        //Checks ng-model value from Byzip.html
+	        if(which === 1) {
+	            data = $scope.zip1m;
+	        } else if(which === 2) {
+	            data = $scope.zip2m;
+	        } else if(which === 3) {
+	            data = $scope.zip3m;
+	        } else if(which === 4) {
+	            data = $scope.zip4m;
+	        }
+	        
+	        newUrl = 'city=' + data;
+		}
+		else{ //User clicked on map
+			newUrl = 'lat=' + newLat + '&lng=' + newLng;
+		}
+        
 
+        //if(data.length === 5) { //Sends city from ng-change value and outputs response to user
+        if(data.length > 3 || (newLat !== undefined && newLng !== undefined)) { //Sends city from ng-change value and outputs response to user
+            $http({
+                method: "GET",
+                url: '/api/v1/getWeather?' + newUrl
+            }).then( function(response) {
+                if(which === 1 || mostRecentInputIndex === 1) {
+                    $scope.zip1City = response.data.city;
+                    $scope.zip1Weather = response.data.weather;           
+                    updateMarker(1, response.data.lat, response.data.lon);
+                } else if(which === 2 || mostRecentInputIndex === 2) {
+                    $scope.zip2City = response.data.city;
+                    $scope.zip2Weather = response.data.weather;
+                    updateMarker(2, response.data.lat, response.data.lon);
+                } else if(which === 3 || mostRecentInputIndex === 3) {
+                    $scope.zip3City = response.data.city;
+                    $scope.zip3Weather = response.data.weather;
+                    updateMarker(3, response.data.lat, response.data.lon);
+                } else if(which === 4 || mostRecentInputIndex === 4) {
+                    $scope.zip4City = response.data.city;
+                    $scope.zip4Weather = response.data.weather;
+                    updateMarker(4, response.data.lat, response.data.lon);
+                } 
+            });
+        } else {
+            if(which === 1 || mostRecentInputIndex === 1) {
+                    $scope.zip1City = "";
+                    $scope.zip1Weather = "";
+                } else if(which === 2 || mostRecentInputIndex === 2) {
+                    $scope.zip2City = "";
+                    $scope.zip2Weather = "";
+                } else if(which === 3 || mostRecentInputIndex === 3) {
+                    $scope.zip3City = "";
+                    $scope.zip3Weather = "";
+                } else if(which === 4 || mostRecentInputIndex === 4) {
+                    $scope.zip4City = "";
+                    $scope.zip4Weather = "";
+                } 
+        }
+    }
+    
+	$scope.zip = getWeather(which);
+	
+	
+	
+	/*
     $scope.zip = function(which) {
 
         var data = "";
@@ -158,6 +230,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
                 } 
         }
     };
+    */
     
 }]);
 
