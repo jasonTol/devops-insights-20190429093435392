@@ -49,11 +49,57 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    
 		    mapDOM.addListener('click', function(e){
 		    	updateMarker(mostRecentInputIndex, e.latLng.lat(), e.latLng.lng());
-		    	
+		    	getMarkerWeather(e.latLng.lat(), e.latLng.lng());
 		    });
 		    
 		    return mapDOM;
 		}
+	  }
+	  
+	  function getMarkerWeather(newLat, newLng)
+	  {
+	  	if(data.length > 3) { //Sends city from ng-change value and outputs response to user
+            $http({
+                method: "GET",
+                url: '/api/v1/getWeather?city=' + data
+            }).then( function(response) {
+                if(which === 1) {
+                    $scope.zip1City = response.data.city;
+                    $scope.zip1Weather = response.data.weather;
+                    $scope.zip1lat = response.data.lat;
+                    $scope.zip1lon = response.data.lon;                 
+                    updateMarker(1, response.data.lat, response.data.lon);
+                } else if(which === 2) {
+                    $scope.zip2City = response.data.city;
+                    $scope.zip2Weather = response.data.weather;
+                    updateMarker(2, response.data.lat, response.data.lon);
+                } else if(which === 3) {
+                    $scope.zip3City = response.data.city;
+                    $scope.zip3Weather = response.data.weather;
+                    updateMarker(3, response.data.lat, response.data.lon);
+                } else if(which === 4) {
+                    $scope.zip4City = response.data.city;
+                    $scope.zip4Weather = response.data.weather;
+                    updateMarker(4, response.data.lat, response.data.lon);
+                } 
+            });
+        } else {
+            if(which === 1) {
+                    $scope.zip1City = "";
+                    $scope.zip1Weather = "";
+                    $scope.zip1lat = "";
+                    $scope.zip1lon = "";
+                } else if(which === 2) {
+                    $scope.zip2City = "";
+                    $scope.zip2Weather = "";
+                } else if(which === 3) {
+                    $scope.zip3City = "";
+                    $scope.zip3Weather = "";
+                } else if(which === 4) {
+                    $scope.zip4City = "";
+                    $scope.zip4Weather = "";
+                } 
+        }
 	  }
 	  
 	$scope.map = initialiseMap(); //Initialise the googlemap
