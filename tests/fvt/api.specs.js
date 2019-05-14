@@ -87,7 +87,8 @@
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
-              assert((pbody.lat === 39.223) && (pbody.lng === 177.4125), "Geocode does not match");
+              //assert((pbody.lat === 39.223) && (pbody.lng === 177.4125), "Geocode does not match");
+              assert((pbody.city === 'Wellington') || (pbody.city === 'wellington'), "Geocode does not match");
               done();
             }
         });

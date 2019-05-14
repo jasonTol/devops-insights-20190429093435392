@@ -121,8 +121,9 @@
     it('with valid geocodes', function() { //Test5
       reqMock = {
         query: {
-        	lat: 39.223,
-        	lng: 177.4125
+        	//lat: 39.223,
+        	//lng: 177.4125
+        	city: 'Wellington'
         }
       };
 
