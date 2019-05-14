@@ -72,5 +72,25 @@
             }
         });
     	}); //End test3
+    	
+    	it('with another valid geocodes', function(done) { //Test4
+        if(!appUrl) {
+            assert.fail("Environment variable APP_URL is not defined");
+            return done();
+        }
+        request({
+      		method: 'GET',
+              url: appUrl + '/api/v1/getWeather?lat=39.223&lng=177.4125'
+          }, function(err, resp, body) {
+          	if(err) {
+          		assert.fail('Failed to get the response');
+          	} else {
+              assert.equal(resp.statusCode, 200);
+              var pbody = JSON.parse(body);
+              assert((pbody.city === 'hamilton') || (pbody.city === 'Hamilton'), "City name does not match");
+              done();
+            }
+        });
+    	}); //End test4
 	}); //End Get Weather
 })();
