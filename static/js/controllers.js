@@ -58,7 +58,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  
 	  function getMarkerWeather(newLat, newLng)
 	  {
-	  	console.log("In getmarkerWeather method newLat: " + newLat typeof newLat + " newLng: " + typeof newLng);
+	  	console.log("In getmarkerWeather method newLat: " + newLat + typeof newLat + " newLng: " + newLng + typeof newLng);
 	  	if(newLat !== undefined && newLng !== undefined) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
