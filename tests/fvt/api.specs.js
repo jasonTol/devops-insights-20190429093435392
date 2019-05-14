@@ -87,13 +87,15 @@
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
-              assert((pbody.city === 'Wellington') || (pbody.city === 'wellington'), "City name does not match");
+              assert((pbody.lat === '39.223') && (pbody.lng === '177.4125'), "Geocode does not match");
               done();
             }
         });
     	}); //End test4
     	
     	/*it('with one geocode', function(done) { //Test4
+    	lat: 39.223,
+        	lng: 177.4125
         if(!appUrl) {
             assert.fail("Environment variable APP_URL is not defined");
             return done();
