@@ -199,13 +199,6 @@ module.exports = function (grunt) {
                 // run tests once instead of continuously
                 singleRun: true
             }
-            plugins: [
-            require('karma-mocha-reporter')
-            ],
-            reporters: ['mocha'],
-            mochaReporter: {
-            	showDiff: true
-            }
         },
 
     });
