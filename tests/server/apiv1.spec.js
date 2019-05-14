@@ -127,14 +127,14 @@
 
       var body = {
         cod: 200,
-        name: 'Hamilton',
+        name: 'Wellington',
         weather: [
           {
             main: 'cold'
           }
         ],
         main: {
-          temp: 10
+          temp: 5
         },
         coord: {
         	lat: 39.223,
