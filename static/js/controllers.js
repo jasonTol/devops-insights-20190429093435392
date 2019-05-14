@@ -58,44 +58,43 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  
 	  function getMarkerWeather(newLat, newLng)
 	  {
-	  	if(data.length > 3) { //Sends city from ng-change value and outputs response to user
+	  	console.log("In getmarkerWeather method newLat: " + newLat typeof newLat + " newLng: " + typeof newLng);
+	  	if(newLat !== undefined && newLng !== undefined) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
-                url: '/api/v1/getWeather?city=' + data
+                url: '/api/v1/getWeather?lat=' + newLat + '&lon=' + newLng
             }).then( function(response) {
-                if(which === 1) {
+                if(mostRecentInputIndex === 1) {
                     $scope.zip1City = response.data.city;
-                    $scope.zip1Weather = response.data.weather;
-                    $scope.zip1lat = response.data.lat;
-                    $scope.zip1lon = response.data.lon;                 
-                    updateMarker(1, response.data.lat, response.data.lon);
-                } else if(which === 2) {
+                    $scope.zip1Weather = response.data.weather;               
+                    //updateMarker(1, response.data.lat, response.data.lon);
+                } else if(mostRecentInputIndex === 2) {
                     $scope.zip2City = response.data.city;
                     $scope.zip2Weather = response.data.weather;
-                    updateMarker(2, response.data.lat, response.data.lon);
-                } else if(which === 3) {
+                    //updateMarker(2, response.data.lat, response.data.lon);
+                } else if(mostRecentInputIndex === 3) {
                     $scope.zip3City = response.data.city;
                     $scope.zip3Weather = response.data.weather;
-                    updateMarker(3, response.data.lat, response.data.lon);
-                } else if(which === 4) {
+                    //updateMarker(3, response.data.lat, response.data.lon);
+                } else if(mostRecentInputIndex === 4) {
                     $scope.zip4City = response.data.city;
                     $scope.zip4Weather = response.data.weather;
-                    updateMarker(4, response.data.lat, response.data.lon);
+                    //updateMarker(4, response.data.lat, response.data.lon);
                 } 
             });
         } else {
-            if(which === 1) {
+            if(mostRecentInputIndex === 1) {
                     $scope.zip1City = "";
                     $scope.zip1Weather = "";
                     $scope.zip1lat = "";
                     $scope.zip1lon = "";
-                } else if(which === 2) {
+                } else if(mostRecentInputIndex === 2) {
                     $scope.zip2City = "";
                     $scope.zip2Weather = "";
-                } else if(which === 3) {
+                } else if(mostRecentInputIndex === 3) {
                     $scope.zip3City = "";
                     $scope.zip3Weather = "";
-                } else if(which === 4) {
+                } else if(mostRecentInputIndex === 4) {
                     $scope.zip4City = "";
                     $scope.zip4Weather = "";
                 } 
