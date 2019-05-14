@@ -1,5 +1,5 @@
 
-(function () {
+(function () { //This essentially acts as the routes/apiv1.js where the fetch request goes to
 
     'use strict';
 
@@ -87,7 +87,7 @@
           	} else {
               assert.equal(resp.statusCode, 200);
               var pbody = JSON.parse(body);
-              assert((pbody.lat === '39.223') && (pbody.lng === '177.4125'), "Geocode does not match");
+              assert((pbody.lat === 39.223) && (pbody.lng === 177.4125), "Geocode does not match");
               done();
             }
         });
