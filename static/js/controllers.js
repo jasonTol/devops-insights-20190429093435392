@@ -109,9 +109,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
     function getWeather(which, newLat, newLng)
     {
 		var newUrl;
+		var data = "";
 		
 		if(which !== undefined){ //If user entered town in input boxes
-			var data = "";
 	        //Checks ng-model value from Byzip.html
 	        if(which === 1) {
 	            data = $scope.zip1m;
