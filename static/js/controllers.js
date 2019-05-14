@@ -62,7 +62,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  	if(newLat !== undefined && newLng !== undefined) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
-                url: '/api/v1/getWeather?lat=' + newLat + '&lon=' + newLng
+                url: '/api/v1/getWeather?lat=' + newLat + '&lng=' + newLng
             }).then( function(response) {
                 if(mostRecentInputIndex === 1) {
                     $scope.zip1City = response.data.city;
