@@ -22,7 +22,6 @@ module.exports = function (grunt) {
       		'server-side': {
         		  options: {
           			 reporter: 'json',
-          			 showDiff: true,
           			 clearRequireCache: true,
           			 colors: true,
                  quite: true,
@@ -199,6 +198,13 @@ module.exports = function (grunt) {
             unit: {
                 // run tests once instead of continuously
                 singleRun: true
+            }
+            plugins: [
+            require('karma-mocha-reporter')
+            ],
+            reporters: ['mocha'],
+            mochaReporter: {
+            	showDiff: true
             }
         },
 
