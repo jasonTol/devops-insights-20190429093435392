@@ -171,7 +171,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         }
     }
     
-	$scope.zip = getWeather(which);
+	$scope.zip = function(which){ //Call the getWeather method and display weather of city typed into input box
+		getWeather(which);
+	};
 	
 	
 	
