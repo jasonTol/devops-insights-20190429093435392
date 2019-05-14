@@ -116,6 +116,44 @@
       assert(resMock.send.lastCall.args[0].city === 'Hamilton', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 10 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     }); //End test4
+    
+    //##########################################################################################################################
+    it('with no geo values', function() { //Test5
+      reqMock = {
+        query: {
+        	
+        }
+      };
+
+      var body = {
+        cod: 200,
+        name: 'Hamilton',
+        weather: [
+          {
+            main: 'cold'
+          }
+        ],
+        main: {
+          temp: 10
+        },
+        coord: {
+        	lat: 39.223,
+        	lon: 177.4125
+        	}        
+      };
+
+      var request = function( obj, callback ){
+        callback(null, null, body);
+      };
+
+      apiv1.__set__("request", request);
+
+      apiv1.getWeather(reqMock, resMock);
+
+      assert(resMock.status.lastCall.calledWith(200), 'Unexpected response:' + resMock.status.lastCall.args);
+      assert(resMock.send.lastCall.args[0].city === 'Hamilton', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
+      assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 10 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
+    }); //End test5
   }); //End Get Weather
 
   /*

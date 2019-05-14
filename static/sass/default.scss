@@ -237,9 +237,11 @@ td {
 }
 
 /*---------------- Google maps --------------------*/
+#mapContainer{
+	margin-right: 25px;
+	float: right;
+}
 #map{
 	height: 550px;
 	width: 550px;
-	margin-right: 25px;
-    float: right;
 }
