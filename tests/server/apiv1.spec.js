@@ -33,7 +33,7 @@
     it('with without city', function() { //Test1
       reqMock = {
         query: {
-
+			city: "null"
         }
       };
 
