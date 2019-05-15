@@ -41,6 +41,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  }
 	  
 	  function initialiseMap(mapDOM){
+	  	console.log("Made it to initialiseMap method mapDOM: " + mapDOM + " type: " + typeof mapDOM);
 	  	if(mapDOM === null){
 			mapDOM = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: -39.0363124, lng: 177.4120491},
