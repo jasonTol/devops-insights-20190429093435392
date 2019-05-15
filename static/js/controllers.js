@@ -41,7 +41,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  }
 	  
 	  function initialiseMap(){
-	  	console.log("Made it to initialiseMap method mapDOM1: " + mapDOM + " type: " + typeof mapDOM);
 	  	
 			var mapDOM = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: -39.0363124, lng: 177.4120491},
@@ -55,7 +54,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    
 		    console.log("Made it to initialiseMap method mapDOM2: " + mapDOM + " type: " + typeof mapDOM);
 		    
-		    return mapDOM;
+		    //return mapDOM;
 	  }
 	  
 	  function getMarkerWeather(newLat, newLng)
@@ -103,7 +102,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         }
 	  }
 	  
-	$scope.map = initialiseMap(); //Initialise the googlemap
+	initialiseMap(); //Initialise the googlemap
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
