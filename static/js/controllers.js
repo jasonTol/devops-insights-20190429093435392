@@ -90,7 +90,11 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         if(data.length > 3 || (newLat !== undefined && newLng !== undefined)) { //Sends city from ng-change value and outputs response to user
             $http({
                 method: "GET",
+<<<<<<< HEAD
                 url: '/api/v1/getWeather?' + newUrl
+=======
+                url: '/api/v1/getWeather?lat=' + newLat + '&lng=' + newLng
+>>>>>>> a4ae708... Wrong key name being sent through request from controller.js
             }).then( function(response) {
                 if(which === 1 || mostRecentInputIndex === 1) {
                     $scope.zip1City = response.data.city;
