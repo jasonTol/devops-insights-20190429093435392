@@ -42,7 +42,7 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?city=null'
+              url: appUrl + '/api/v1/getWeather'
           }, /* @callback */ function(err, resp, body) { 
           	if(err) {
           		assert.fail('Failed to get the response');
