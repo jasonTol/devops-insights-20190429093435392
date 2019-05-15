@@ -1,4 +1,4 @@
-
+//Check
 (function () { //This essentially acts as the routes/apiv1.js where the fetch request goes to
 
     'use strict';
