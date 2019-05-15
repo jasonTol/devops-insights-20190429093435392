@@ -1,4 +1,4 @@
-
+/*
 angular.module('googMap',[])
 .factory('createMap', function() {
   var markerArray = [0,0,0,0];
@@ -50,3 +50,4 @@ angular.module('googMap',[])
   	updateMarker: updateMarker
   };
 });
+*/
