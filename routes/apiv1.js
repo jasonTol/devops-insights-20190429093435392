@@ -12,10 +12,10 @@ var aurl;
 
 exports.getWeather = function(req, res) {
 	var newCity = req.query.city;
-	if( (newCity === null) || (typeof(newCity) === undefined) ) {
+	if( (newCity === null) || (typeof(newCity) === 'undefined') ) {
 		var newLat = req.query.lat;
 		var newLng = req.query.lng;
-		if(((newLat === null) || (newLng === null)) || ((typeof(newLat) === undefined) || (typeof(newLng) === undefined))){
+		if(((newLat === null) || (newLng === null)) || ((typeof(newLat) === 'undefined') || (typeof(newLng) === 'undefined'))){
 			return res.status(400).send('city missing');
 		}
 		
