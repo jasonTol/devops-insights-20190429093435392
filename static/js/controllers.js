@@ -100,7 +100,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  }
 	  */
 	  
-	$scope.map = initialiseMap(); //Initialise the googlemap
+	$scope.map = initialiseMap($scope.map); //Initialise the googlemap
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
