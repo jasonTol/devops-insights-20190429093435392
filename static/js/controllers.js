@@ -42,19 +42,19 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  
 	  function initialiseMap(){
 	  	
-			var mapDOM = new google.maps.Map(document.getElementById('map'), {
+			$scope.map = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: -39.0363124, lng: 177.4120491},
 		      zoom: 6
 		    });
 		    
-		    mapDOM.addListener('click', function(e){
+		    $scope.map.addListener('click', function(e){
 		    	updateMarker(mostRecentInputIndex, e.latLng.lat(), e.latLng.lng());
 		    	getMarkerWeather(e.latLng.lat(), e.latLng.lng());
 		    });
 		    
 		    console.log("Made it to initialiseMap method mapDOM2: " + mapDOM + " type: " + typeof mapDOM);
 		    
-		    //return mapDOM;
+		    return mapDOM;
 	  }
 	  
 	  function getMarkerWeather(newLat, newLng)
