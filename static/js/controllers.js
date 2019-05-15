@@ -114,7 +114,11 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             if(which === 1 || mostRecentInputIndex === 1) {
                     $scope.zip1City = "";
                     $scope.zip1Weather = "";
+<<<<<<< HEAD
                 } else if(which === 2 || mostRecentInputIndex === 2) {
+=======
+                } else if(mostRecentInputIndex === 2) {
+>>>>>>> 00195d1... Surprisingly working. Removed latitude and longitude fields in the html and js files. Tried formatting the look of the map a little
                     $scope.zip2City = "";
                     $scope.zip2Weather = "";
                 } else if(which === 3 || mostRecentInputIndex === 3) {
