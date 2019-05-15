@@ -52,9 +52,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    	getMarkerWeather(e.latLng.lat(), e.latLng.lng());
 		    });
 		    
-		    console.log("Made it to initialiseMap method mapDOM2: " + mapDOM + " type: " + typeof mapDOM);
+		    //console.log("Made it to initialiseMap method mapDOM2: " + mapDOM + " type: " + typeof mapDOM);
 		    
-		    return mapDOM;
+		    //return mapDOM;
 	  }
 	  
 	  function getMarkerWeather(newLat, newLng)
