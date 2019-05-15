@@ -118,7 +118,7 @@
     }); //End test4
     
     //##########################################################################################################################
-    it('with valid geocodes', function() { //Test5
+    /*it('with valid geocodes', function() { //Test5
       reqMock = {
         query: {
         	lat: 39.223,
@@ -156,6 +156,7 @@
       assert(resMock.send.lastCall.args[0].city === 'Wellington', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 5 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     }); //End test5
+    */
   }); //End Get Weather
 
   /*

@@ -73,6 +73,7 @@
         });
     	}); //End test3
     	
+    	/*
     	it('with valid geocode', function(done) { //Test4
         if(!appUrl) {
             assert.fail("Environment variable APP_URL is not defined");
@@ -89,28 +90,6 @@
               var pbody = JSON.parse(body);
               //assert((pbody.lat === 39.223) && (pbody.lng === 177.4125), "Geocode does not match");
               assert((pbody.city === 'Wellington') || (pbody.city === 'wellington'), "Geocode does not match");
-              done();
-            }
-        });
-    	}); //End test4
-    	
-    	/*it('with one geocode', function(done) { //Test4
-    	lat: 39.223,
-        	lng: 177.4125
-        if(!appUrl) {
-            assert.fail("Environment variable APP_URL is not defined");
-            return done();
-        }
-        request({
-      		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?lng=177.4125'
-          }, function(err, resp, body) {
-          	if(err) {
-          		assert.fail('Failed to get the response');
-          	} else {
-              assert.equal(resp.statusCode, 200);
-              var pbody = JSON.parse(body);
-              assert((pbody.city === 'hamilton') || (pbody.city === 'Hamilton'), "City name does not match");
               done();
             }
         });
