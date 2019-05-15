@@ -40,10 +40,10 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  	markerArray[index-1] = marker; //Add marker to array at pass in index
 	  }
 	  
-	  function initialiseMap(mapDOM){
-	  	console.log("Made it to initialiseMap method mapDOM: " + mapDOM + " type: " + typeof mapDOM);
-	  	if(mapDOM === null){
-			mapDOM = new google.maps.Map(document.getElementById('map'), {
+	  function initialiseMap(){
+	  	console.log("Made it to initialiseMap method mapDOM1: " + mapDOM + " type: " + typeof mapDOM);
+	  	
+			var mapDOM = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: -39.0363124, lng: 177.4120491},
 		      zoom: 6
 		    });
@@ -53,8 +53,9 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    	getMarkerWeather(e.latLng.lat(), e.latLng.lng());
 		    });
 		    
+		    console.log("Made it to initialiseMap method mapDOM2: " + mapDOM + " type: " + typeof mapDOM);
+		    
 		    return mapDOM;
-		}
 	  }
 	  
 	  function getMarkerWeather(newLat, newLng)
