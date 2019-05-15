@@ -9,6 +9,7 @@ var request = REQUEST.defaults( {
 
 var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric";
 var aurl;
+
 exports.getWeather = function(req, res) {
 	var newCity = req.query.city;
 	if( (newCity === null) || (typeof(newCity) === 'undefined') ) {
@@ -30,7 +31,7 @@ exports.getWeather = function(req, res) {
 	request({
 		method: 'GET',
         url: aurl,
-  		json: true
+  		json: true  
     }, function(err, resp, body) {
     	if(err) {
     		res.status(400).send('Failed to get the data');

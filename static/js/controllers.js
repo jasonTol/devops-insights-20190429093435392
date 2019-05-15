@@ -55,50 +55,6 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		    return mapDOM;
 		}
 	  }
-	  /*
-	  function getMarkerWeather(newLat, newLng)
-	  {
-	  	console.log("In getmarkerWeather method newLat: " + newLat + typeof newLat + " newLng: " + newLng + typeof newLng);
-	  	if(newLat !== undefined && newLng !== undefined) { //Sends city from ng-change value and outputs response to user
-            $http({
-                method: "GET",
-                url: '/api/v1/getWeather?lat=' + newLat + '&lng=' + newLng
-            }).then( function(response) {
-                if(mostRecentInputIndex === 1) {
-                    $scope.zip1City = response.data.city;
-                    $scope.zip1Weather = response.data.weather;               
-                    //updateMarker(1, response.data.lat, response.data.lon);
-                } else if(mostRecentInputIndex === 2) {
-                    $scope.zip2City = response.data.city;
-                    $scope.zip2Weather = response.data.weather;
-                    //updateMarker(2, response.data.lat, response.data.lon);
-                } else if(mostRecentInputIndex === 3) {
-                    $scope.zip3City = response.data.city;
-                    $scope.zip3Weather = response.data.weather;
-                    //updateMarker(3, response.data.lat, response.data.lon);
-                } else if(mostRecentInputIndex === 4) {
-                    $scope.zip4City = response.data.city;
-                    $scope.zip4Weather = response.data.weather;
-                    //updateMarker(4, response.data.lat, response.data.lon);
-                } 
-            });
-        } else {
-            if(mostRecentInputIndex === 1) {
-                    $scope.zip1City = "";
-                    $scope.zip1Weather = "";
-                } else if(mostRecentInputIndex === 2) {
-                    $scope.zip2City = "";
-                    $scope.zip2Weather = "";
-                } else if(mostRecentInputIndex === 3) {
-                    $scope.zip3City = "";
-                    $scope.zip3Weather = "";
-                } else if(mostRecentInputIndex === 4) {
-                    $scope.zip4City = "";
-                    $scope.zip4Weather = "";
-                } 
-        }
-	  }
-	  */
 	  
 	$scope.map = initialiseMap($scope.map); //Initialise the googlemap
     $scope.somemessage = "Some weather";
