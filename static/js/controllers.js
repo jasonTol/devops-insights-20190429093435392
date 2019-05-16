@@ -106,12 +106,46 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	getDbData();
 	
 	function getDbData(){
+		var ibmdb = require('ibm_db');
+ 
+		ibmdb.open("DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;UID=ljr29093;PWD=r4m^f5gl6kntq4b7;PORT=50000;PROTOCOL=TCPIP", function (err,conn) {
+		  if (err) return console.log(err);
+		  
+		  conn.query('select 1 from sysibm.sysdummy1', function (err, data) {
+		    if (err) console.log(err);
+		    else console.log(data);
+		 
+		    conn.close(function () {
+		      console.log('done');
+		    });
+		  });
+		});
+		
+		
+		/*
+		 * {
+  "hostname": "dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net",
+  "password": "r4m^f5gl6kntq4b7",
+  "https_url": "https://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net",
+  "port": 50000,
+  "ssldsn": "DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;PORT=50001;PROTOCOL=TCPIP;UID=ljr29093;PWD=r4m^f5gl6kntq4b7;Security=SSL;",
+  "host": "dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net",
+  "jdbcurl": "jdbc:db2://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50000/BLUDB",
+  "uri": "db2://ljr29093:r4m%5Ef5gl6kntq4b7@dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50000/BLUDB",
+  "db": "BLUDB",
+  "dsn": "DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;PORT=50000;PROTOCOL=TCPIP;UID=ljr29093;PWD=r4m^f5gl6kntq4b7;",
+  "username": "ljr29093",
+  "ssljdbcurl": "jdbc:db2://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50001/BLUDB:sslConnection=true;"
+}
+		
+		
 		var url = "../Php/sendReceiveData.php?city=Wairoa123";
         fetch(url, {
             method: 'GET'
         })
             .then(response = response.text)
             .then(handleResponse, handleError);
+            */
 	}
 	
 	function handleResponse(response){
