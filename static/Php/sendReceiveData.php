@@ -33,6 +33,8 @@ $conn = odbc_connect( $conn_string, "", "" );
 if( $conn )
 {
     echo "Connection succeeded.";
+    
+    
 
     # Disconnect
     #
@@ -44,7 +46,13 @@ else
 }
 ?>
 
+//retrieve GET variable
+$city = $_GET['city'];
 
+echo $city;
+//echo back that variable in json format?
+
+/*
 {
   "hostname": "dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net",
   "password": "r4m^f5gl6kntq4b7",
@@ -59,3 +67,4 @@ else
   "username": "ljr29093",
   "ssljdbcurl": "jdbc:db2://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50001/BLUDB:sslConnection=true;"
 }
+*/

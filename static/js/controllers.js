@@ -103,6 +103,21 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	  }
 	  
 	initialiseMap(); //Initialise the googlemap
+	getDbData();
+	
+	function getDbData(){
+		var url = "../Php/sendReceiveData.php?city=Wairoa123";
+        fetch(url, {
+            method: 'GET'
+        })
+            .then(response => response.text)
+            .then(alert(response), handleError);
+	}
+	
+	function handleError(){
+		alert("error from php file");
+	}
+	
     $scope.somemessage = "Some weather";
     $scope.zip1City = "";
     $scope.zip1Weather = "";
