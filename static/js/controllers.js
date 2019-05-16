@@ -110,7 +110,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
         fetch(url, {
             method: 'GET'
         })
-            .then(response => response.text)
+            .then(response = response.text)
             .then(alert(response), handleError);
 	}
 	
