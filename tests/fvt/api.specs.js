@@ -73,7 +73,6 @@
         });
     	}); //End test3
     	
-    	
     	it('with valid geocode', function(done) { //Test4
         if(!appUrl) {
             assert.fail("Environment variable APP_URL is not defined");
@@ -94,5 +93,23 @@
             }
         });
     	}); //End test4
+    	
+    	it('with invalid geocode', function(done) { //Test5
+        if(!appUrl) {
+            assert.fail("Environment variable APP_URL is not defined");
+            return done();
+        }
+        request({
+      		method: 'GET',
+              url: appUrl + '/api/v1/getWeather?lat=000000&lng=000000'
+          }, function(err, resp, body) {
+          	if(err) {
+          		assert.fail('Failed to get the response');
+          	} else {
+              assert.equal(resp.statusCode, 400);
+              done();
+            }
+        });
+    	}); //End test5
 	}); //End Get Weather
 })();

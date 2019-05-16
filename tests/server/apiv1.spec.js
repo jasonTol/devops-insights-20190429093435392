@@ -116,7 +116,6 @@
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 10 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     }); //End test4
     
-    //##########################################################################################################################
     it('with valid geocodes', function() { //Test5
       reqMock = {
         query: {
@@ -155,6 +154,27 @@
       assert(resMock.send.lastCall.args[0].city === 'New Plymouth', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 5 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     }); //End test5
+    
+    //##########################################################################################################################
+    it('with incomplete geocode', function() { //Test6
+      reqMock = {
+        query: {
+          lat: '000000',
+          lng: '000000'
+        }
+      };
+
+      var request = function( obj, callback ){
+        callback(null, null, {});
+      };
+
+      apiv1.__set__("request", request);
+
+      apiv1.getWeather(reqMock, resMock);
+
+      assert(resMock.status.lastCall.calledWith(400), 'Unexpected response:' + resMock.status.lastCall.args);
+      assert(resMock.send.lastCall.args[0].msg === 'Failed', 'Unexpected response:' + resMock.send.lastCall.args);
+    }); //End test6
   }); //End Get Weather
 
   /*
