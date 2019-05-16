@@ -111,7 +111,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		ibmdb.open("DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;UID=ljr29093;PWD=r4m^f5gl6kntq4b7;PORT=50000;PROTOCOL=TCPIP", function (err,conn) {
 		  if (err) return console.log(err);
 		  
-		  conn.query('select 1 from sysibm.sysdummy1', function (err, data) {
+		  conn.query('select 1 from LJR29093.CITYWEATHER', function (err, data) {
 		    if (err) console.log(err);
 		    else console.log(data);
 		 
@@ -124,7 +124,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 		
 		/*
 		 * {
-  "hostname": "dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net",
+  "hostname": "dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net", LJR29093.CITYWEATHER
   "password": "r4m^f5gl6kntq4b7",
   "https_url": "https://dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net",
   "port": 50000,
