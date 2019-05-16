@@ -159,8 +159,8 @@
     it('with incomplete geocode', function() { //Test6
       reqMock = {
         query: {
-          lat: '000000',
-          lng: '000000'
+          lat: '98h7',
+          lng: '98h9'
         }
       };
 

@@ -101,7 +101,7 @@
         }
         request({
       		method: 'GET',
-              url: appUrl + '/api/v1/getWeather?lat=000000&lng=000000'
+              url: appUrl + '/api/v1/getWeather?lat=98h7&lng=98h9'
           }, function(err, resp, body) {
           	if(err) {
           		assert.fail('Failed to get the response');
