@@ -111,7 +111,11 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
             method: 'GET'
         })
             .then(response = response.text)
-            .then(alert(response), handleError);
+            .then(handleResponse, handleError);
+	}
+	
+	function handleResponse(response){
+		alert(response);
 	}
 	
 	function handleError(){

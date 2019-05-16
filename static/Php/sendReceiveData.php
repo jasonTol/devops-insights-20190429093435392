@@ -44,13 +44,16 @@ else
 {
     echo "Connection failed.";
 }
-?>
 
 //retrieve GET variable
 $city = $_GET['city'];
 
 echo $city;
 //echo back that variable in json format?
+
+?>
+
+
 
 /*
 {
