@@ -106,7 +106,7 @@ ConsoleModule.controller('wcontroller', ['$scope', '$http', '$routeParams', '$ti
 	getDbData();
 	
 	function getDbData(){
-		var ibmdb = require('ibm_db');
+		var ibmdb = require('db2://ljr29093:r4m%5Ef5gl6kntq4b7@dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net:50000/BLUDB');
  
 		ibmdb.open("DATABASE=BLUDB;HOSTNAME=dashdb-txn-sbox-yp-dal09-03.services.dal.bluemix.net;UID=ljr29093;PWD=r4m^f5gl6kntq4b7;PORT=50000;PROTOCOL=TCPIP", function (err,conn) {
 		  if (err) return console.log(err);
