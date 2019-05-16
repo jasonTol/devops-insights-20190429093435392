@@ -12,10 +12,10 @@ var aurl;
 
 exports.getWeather = function(req, res) {
 	var newCity = req.query.city;
-	if( (newCity === null) || (typeof(newCity) === 'undefined') ) {
+	if( (newCity === null) || (typeof(newCity) === 'undefined') ) { //Check if the city was used
 		var newLat = req.query.lat;
 		var newLng = req.query.lng;
-		if(((newLat === null) || (newLng === null)) || ((typeof(newLat) === 'undefined') || (typeof(newLng) === 'undefined'))){
+		if(((newLat === null) || (newLng === null)) || ((typeof(newLat) === 'undefined') || (typeof(newLng) === 'undefined'))){ //Check if the latitude and longitude were used instead
 			return res.status(400).send('city missing');
 		}
 		
@@ -35,7 +35,6 @@ exports.getWeather = function(req, res) {
     }, function(err, resp, body) {
     	if(err) {
     		res.status(400).send('Failed to get the data');
-    		//console.error("Failed to send request to openweathermap.org", err);
     	} else {
     		if(body.cod === 200) {
     			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
@@ -49,53 +48,6 @@ exports.getWeather = function(req, res) {
 
 };
 router.get('/getWeather', exports.getWeather);
-
-
-
-
-/*
-var express = require('express');
-var router = express.Router();
-var REQUEST = require('request');
-
-var request = REQUEST.defaults( {
-    strictSSL: false
-});
-
-var OPENWEATHERURL = "http://api.openweathermap.org/data/2.5/weather?appid=6b7b471967dd0851d0010cdecf28f829&units=metric";
-
-exports.getWeather = function(req, res) {
-	var newCity = req.query.city;
-	if( (newCity === null) || (typeof(newCity) === 'undefined') ) {
-		var newLat = req.query.lat;
-		var newLng = req.query.lng;
-		if(((newLat === null) || (newLng === null)) || ((typeof(newLat) === 'undefined') || (typeof(newLng) === 'undefined')))
-		return res.status(400).send('city missing');
-	}
-	
-	var aurl = OPENWEATHERURL + '&q=' + newCity + ',NZ';
-
-	request({
-		method: 'GET',
-        url: aurl,
-  		json: true
-    }, function(err, resp, body) {
-    	if(err) {
-    		res.status(400).send('Failed to get the data');
-    		//console.error("Failed to send request to openweathermap.org", err);
-    	} else {
-    		if(body.cod === 200) {
-    			var weath = "Conditions are " + body.weather[0].main + " and temperature is " + body.main.temp + ' C';
-    			var response = {city: body.name, weather: weath, lat: body.coord.lat, lon: body.coord.lon};
-    			return res.status(200).send(response);
-    		} else {
-                return res.status(400).send({msg:'Failed'});
-            }
-    	}
-    });
-
-};
-*/
 
 
 /*
