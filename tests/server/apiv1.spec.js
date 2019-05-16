@@ -117,18 +117,18 @@
     }); //End test4
     
     //##########################################################################################################################
-    /*it('with valid geocodes', function() { //Test5
+    it('with valid geocodes', function() { //Test5
       reqMock = {
         query: {
-        	lat: 39.223,
-        	lng: 177.4125
-        	//city: 'Wellington'
+        	lat: -39.05187119252786,
+        	lng: 174.06645433756705
+        	//city: 'New plymouth' -39.05187119252786number newLng: 174.06645433756705
         }
       };
 
       var body = {
         cod: 200,
-        name: 'Wellington',
+        name: 'New Plymouth',
         weather: [
           {
             main: 'cold'
@@ -138,8 +138,8 @@
           temp: 5
         },
         coord: {
-        	lat: 39.223,
-        	lon: 177.4125
+        	lat: -39.05187119252786,
+        	lon: 174.06645433756705
         	}        
       };
 
@@ -152,10 +152,9 @@
       apiv1.getWeather(reqMock, resMock);
 
       assert(resMock.status.lastCall.calledWith(200), 'Unexpected response:' + resMock.status.lastCall.args);
-      assert(resMock.send.lastCall.args[0].city === 'Wellington', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
+      assert(resMock.send.lastCall.args[0].city === 'New Plymouth', 'Unexpected response:' + resMock.send.lastCall.args[0].city);
       assert(resMock.send.lastCall.args[0].weather === 'Conditions are cold and temperature is 5 C', 'Unexpected response:' + resMock.send.lastCall.args[0].weather);
     }); //End test5
-    */
   }); //End Get Weather
 
   /*
